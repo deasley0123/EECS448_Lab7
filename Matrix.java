@@ -71,5 +71,23 @@ public class Matrix {
 		return arnold;
 	}
 	
+	/*
+	 * Invert the matrix
+	 */
+	public Matrix inversinator(){
+		
+		//variable to be returned
+		Matrix inverted = new Matrix(this.size);
+		
+		double det = determinator();
+		
+		for(int i = 0; i < size; i++){
+			for(int j = 0; j < size; j++){
+				inverted.innards[i][j] = (int)(Math.pow(-1.0, (double)(i + j)) * subMatrix(j, i).determinator() / det);
+			}
+		}
+		
+		return inverted;
+	}
 
 }
