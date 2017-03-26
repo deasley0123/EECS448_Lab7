@@ -5,29 +5,29 @@ public class Matrix {
 	 * Class variables
 	 */
 	int size = 0;
-	int[][] innards;
+	double[][] innards;
 	
 	/*
 	 * Constructor
 	 */
 	public Matrix(int n){ 	//accepts a square matrix size 'n'
 		size = n;
-		innards = new int[size][size];
+		innards = new double[size][size];
 	}
 	
 	/*
-	 * Convert string to an array of integers
+	 * Convert string to an array of doubles
 	 */
-	private int[] strToIntArr(String str){
+	private double[] strToDoubArr(String str){
 		
 		//variable to be returned
-		int[] arr = new int[size];
+		double[] arr = new double[size];
 		
 		//break up input string along the spaces and parse into integers
 		String[] bits = str.split(" ");
 		int i = 0;
 		for(String bit : bits){
-			arr[i++] = Integer.parseInt(bit);
+			arr[i++] = Double.parseDouble(bit);
 		}
 		
 		return arr;
@@ -36,7 +36,7 @@ public class Matrix {
 	/*
 	 * Convert array of integers to string
 	 */
-	private String intArrToStr(int[] arr){
+	private String doubArrToStr(double[] arr){
 		
 		//variable to be returned
 		String temp = new String();
@@ -55,7 +55,7 @@ public class Matrix {
 	 * Sets individual rows of the matrix
 	 */
 	public void setRow(int row, String rowValues){ 	//accepts a row number followed by an array of values
-		innards[row] = strToIntArr(rowValues);
+		innards[row] = strToDoubArr(rowValues);
 	}
 	
 	/*
@@ -63,19 +63,19 @@ public class Matrix {
 	 */
 	public String getRow(int row){
 		
-		return intArrToStr(innards[row]);
+		return doubArrToStr(innards[row]);
 	}
 	
 	/*
 	 * Creates a matrix from the existing matrix. The result is smaller by one degree.
 	 */
-	private Matrix subMatrix(int startRow, int c){
+	private Matrix subMatrix(int r, int c){
 		Matrix sub = new Matrix(size - 1);
 		
 		int row = 0;
 		for(int i = 0; i < size; i++){
 			
-			if(i == startRow) continue;
+			if(i == r) continue;
 			
 			int col = 0;
 			for(int j = 0; j < size; j++){
@@ -108,7 +108,7 @@ public class Matrix {
 		}
 		else{ 	//calculate the determinant as we go
 			for(int i = 0; i < size; i++){
-				arnold += Math.pow(-1.0, (double)i) * innards[0][i] * subMatrix(0, 1).determinator();
+				arnold += Math.pow(-1.0, (double)i) * innards[0][i] * subMatrix(0, i).determinator();
 			}
 		}
 		
@@ -127,7 +127,7 @@ public class Matrix {
 		
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				inverted.innards[i][j] = (int)(Math.pow(-1.0, (double)(i + j)) * subMatrix(j, i).determinator() / det);
+				inverted.innards[i][j] = (Math.pow(-1.0, (double)(i + j)) * subMatrix(j, i).determinator() / det);
 			}
 		}
 		
