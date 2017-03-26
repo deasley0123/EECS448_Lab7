@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class matrixCalc {
-
+	
 	public static int main(String[] args) {
 		//Confirm command-line parameters
 		if(args.length < 3)

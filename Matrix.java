@@ -16,10 +16,28 @@ public class Matrix {
 	}
 	
 	/*
+	 * Convert string to an array of integers
+	 */
+	private int[] strToIntArr(String str){
+		
+		//variable to be returned
+		int[] arr = new int[size];
+		
+		//break up input string along the spaces and parse into integers
+		String[] bits = str.split(" ");
+		int i = 0;
+		for(String bit : bits){
+			arr[i++] = Integer.parseInt(bit);
+		}
+		
+		return arr;
+	}
+	
+	/*
 	 * Sets individual rows of the matrix
 	 */
-	public void setRow(int row, int[] values){ 	//accepts a row number followed by an array of values
-		innards[row] = values;
+	public void setRow(int row, String rowValues){ 	//accepts a row number followed by an array of values
+		innards[row] = strToIntArr(rowValues);
 	}
 	
 	/*
