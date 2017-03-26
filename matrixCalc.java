@@ -32,6 +32,30 @@ public class matrixCalc {
 			
 			while((n = Integer.parseInt(buffIn.readLine())) != 0){
 				
+				//variables in use
+				Matrix mySon = new Matrix(n);
+				String currRow = new String();
+				
+				//Read in matrix values and write them out
+				buffOut.write("M =");
+				for(int i = 0; i < n; i++){
+					currRow	 = buffIn.readLine();
+					mySon.setRow(i, currRow);
+					buffOut.write(currRow);
+				}
+				
+				//calculate and write out determinate
+				double det = mySon.determinator();
+				buffOut.write("det(m) = " + det);
+				
+				//Provided it exists, calculate the inverse matrix and write it to file
+				if (det != 0){
+					Matrix notMySon = mySon.inversinator();
+					buffOut.write("M inverse =");
+					
+					//INCOMPLETE! Waiting on getRow function.
+				}
+				
 			}
 			
 		} catch (NumberFormatException e) {
