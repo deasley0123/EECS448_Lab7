@@ -1,16 +1,16 @@
 
 public class Matrix {
 	int size = 0;
-	int[][] inards;
+	int[][] innards;
 	
 	public Matrix(int n){
 		size = n;
-		inards = new int[size][size];
+		innards = new int[size][size];
 	}
 	
 	public void setRow(int row, int[] values){
-		for(int i = 0; i < values.length; i++){
-			inards[row][i] = values[i];
+		for(int i = 0; i < size; i++){
+			innards[row][i] = values[i];
 		}
 	}
 	
