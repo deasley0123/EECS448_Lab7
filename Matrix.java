@@ -34,10 +34,36 @@ public class Matrix {
 	}
 	
 	/*
+	 * Convert array of integers to string
+	 */
+	private String intArrToStr(int[] arr){
+		
+		//variable to be returned
+		String temp = new String();
+		
+		for(int i = 0; i < arr.length; i ++){
+			temp += arr[i];
+			if(i < arr.length -1){
+				temp += " ";	
+			}
+		}
+		
+		return temp;
+	}
+	
+	/*
 	 * Sets individual rows of the matrix
 	 */
 	public void setRow(int row, String rowValues){ 	//accepts a row number followed by an array of values
 		innards[row] = strToIntArr(rowValues);
+	}
+	
+	/*
+	 * Gets individual rows of the matrix
+	 */
+	public String getRow(int row){
+		
+		return intArrToStr(innards[row]);
 	}
 	
 	/*
