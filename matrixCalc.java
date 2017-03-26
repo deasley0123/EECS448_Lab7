@@ -52,11 +52,16 @@ public class matrixCalc {
 				if (det != 0){
 					Matrix notMySon = mySon.inversinator();
 					buffOut.write("M inverse =");
+					for(int i = 0; i < n; i++){
+						buffOut.write(notMySon.getRow(i));
+					}
 					
-					//INCOMPLETE! Waiting on getRow function.
 				}
 				
 			}
+			
+			buffIn.close();
+			buffOut.close();
 			
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
