@@ -1,17 +1,20 @@
 
 public class Matrix {
+	
+	//Class variables
 	int size = 0;
 	int[][] innards;
 	
-	public Matrix(int n){
+	//Constructor
+	public Matrix(int n){ 	//accepts a square matrix size 'n'
 		size = n;
 		innards = new int[size][size];
 	}
 	
-	public void setRow(int row, int[] values){
-		for(int i = 0; i < size; i++){
-			innards[row][i] = values[i];
-		}
+	//Sets individual rows of the matrix
+	public void setRow(int row, int[] values){ 	//accepts a row number followed by an array of values
+		innards[row] = values;
 	}
+	
 	
 }
